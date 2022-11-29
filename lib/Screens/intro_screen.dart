@@ -43,9 +43,6 @@ class _IntroScreenState extends State<IntroScreen> {
             padding: EdgeInsets.symmetric(horizontal: 12.0),
             child: Column(
               children: [
-                Container(
-                  height: 400,
-                ),
                 Spacer(),
                 MasonryGridView.count(
                   padding: EdgeInsets.zero,
