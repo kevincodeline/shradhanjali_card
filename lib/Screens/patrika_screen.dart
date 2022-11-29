@@ -10,6 +10,6 @@ class PatrikaScreen extends StatefulWidget {
 class _PatrikaScreenState extends State<PatrikaScreen> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold();
   }
 }
