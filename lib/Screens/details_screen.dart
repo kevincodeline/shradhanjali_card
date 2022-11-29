@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -23,6 +24,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
   TextEditingController _antimDate = TextEditingController();
   TextEditingController _antimTime = TextEditingController();
   TextEditingController _address = TextEditingController();
+  TextEditingController _liName1 = TextEditingController();
+  TextEditingController _liName2 = TextEditingController();
+  TextEditingController _liName3 = TextEditingController();
+  TextEditingController _mono1 = TextEditingController();
+  TextEditingController _mono2 = TextEditingController();
+  TextEditingController _mono3 = TextEditingController();
   DateFormat formatter = DateFormat('dd-MM-yyyy');
   late XFile? selectedImage = null;
 
@@ -99,21 +106,25 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       fontSize: 12,
                       fontWeight: FontWeight.w700),
                 ),
-                TextFormField(
-                  cursorColor: Colors.black,
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'મૃત વ્યક્તિનું નામ દાખલ કરો',
-                    hintStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.black, width: 2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.black, width: 2),
+                SizedBox(
+                  height: Get.height * 0.08,
+                  child: TextFormField(
+                    controller: _deadName,
+                    cursorColor: Colors.black,
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      hintText: 'મૃત વ્યક્તિનું નામ દાખલ કરો',
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
                     ),
                   ),
                 ),
@@ -127,21 +138,25 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       fontSize: 12,
                       fontWeight: FontWeight.w700),
                 ),
-                TextFormField(
-                  cursorColor: Colors.black,
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                    hintText: 'સંબંધ',
-                    hintStyle: TextStyle(
-                      color: Colors.black,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.black, width: 2),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Colors.black, width: 2),
+                SizedBox(
+                  height: Get.height * 0.08,
+                  child: TextFormField(
+                    controller: _relation,
+                    cursorColor: Colors.black,
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      hintText: 'સંબંધ',
+                      hintStyle: TextStyle(
+                        color: Colors.black,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        borderSide: BorderSide(color: Colors.black, width: 2),
+                      ),
                     ),
                   ),
                 ),
@@ -174,6 +189,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
+                      height: Get.height * 0.08,
                       width: Get.width * 0.50,
                       child: TextFormField(
                         controller: _deadDate,
@@ -237,10 +253,15 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                     ),
                     SizedBox(
+                      height: Get.height * 0.08,
                       width: Get.width * 0.40,
                       child: TextFormField(
                         controller: _age,
                         cursorColor: Colors.black,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          LengthLimitingTextInputFormatter(10),
+                        ],
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           hintText: 'ઉંમર',
@@ -291,6 +312,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     SizedBox(
+                      height: Get.height * 0.08,
                       width: Get.width * 0.45,
                       child: TextFormField(
                         controller: _villageName,
@@ -315,6 +337,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       ),
                     ),
                     SizedBox(
+                      height: Get.height * 0.08,
                       width: Get.width * 0.48,
                       child: TextFormField(
                         controller: _antimDate,
@@ -393,6 +416,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           fontWeight: FontWeight.w700),
                     ),
                     SizedBox(
+                      height: Get.height * 0.08,
                       width: Get.width * 0.60,
                       child: TextFormField(
                         controller: _antimTime,
@@ -500,6 +524,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           height: Get.height * 0.08,
                           width: Get.width * 0.45,
                           child: TextFormField(
+                            controller: _liName1,
                             cursorColor: Colors.black,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -524,7 +549,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           height: Get.height * 0.08,
                           width: Get.width * 0.50,
                           child: TextFormField(
+                            controller: _mono1,
                             cursorColor: Colors.black,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                            ],
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               hintText: 'મોબાઇલ નંબર',
@@ -556,6 +586,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           height: Get.height * 0.08,
                           width: Get.width * 0.45,
                           child: TextFormField(
+                            controller: _liName2,
                             cursorColor: Colors.black,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -580,7 +611,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           height: Get.height * 0.08,
                           width: Get.width * 0.50,
                           child: TextFormField(
+                            controller: _mono2,
                             cursorColor: Colors.black,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                            ],
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               hintText: 'મોબાઇલ નંબર',
@@ -612,6 +648,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           height: Get.height * 0.08,
                           width: Get.width * 0.45,
                           child: TextFormField(
+                            controller: _liName3,
                             cursorColor: Colors.black,
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
@@ -636,7 +673,12 @@ class _DetailsScreenState extends State<DetailsScreen> {
                           height: Get.height * 0.08,
                           width: Get.width * 0.50,
                           child: TextFormField(
+                            controller: _mono3,
                             cursorColor: Colors.black,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                            ],
                             style: TextStyle(color: Colors.black),
                             decoration: InputDecoration(
                               hintText: 'મોબાઇલ નંબર',
