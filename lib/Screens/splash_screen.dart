@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shradhanjali_card/Screens/select_theme.dart';
+import 'package:shradhanjali_card/Screens/intro_screen.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -18,7 +18,7 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
       Duration(seconds: 2),
       () {
-        Get.to(() => SelectThemeScreen());
+        Get.to(() => IntroScreen());
       },
     );
     super.initState();

@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shradhanjali_card/Screens/details_screen.dart';
+import 'package:shradhanjali_card/Screens/select_theme.dart';
 
 class OptionScreen extends StatefulWidget {
   const OptionScreen({Key? key}) : super(key: key);
@@ -52,7 +52,7 @@ class _OptionScreenState extends State<OptionScreen> {
                   ),
                   CommonOption(
                       onTap: () {
-                        Get.to(() => DetailsScreen());
+                        Get.to(() => SelectThemeScreen());
                       },
                       text: 'શ્રદ્ધાંજલિ'),
                   SizedBox(
