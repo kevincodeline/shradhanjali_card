@@ -8,7 +8,6 @@ import 'package:shradhanjali_card/Screens/intro_screen.dart';
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
 
-  @override
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
