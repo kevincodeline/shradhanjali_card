@@ -1,14 +1,17 @@
 import 'dart:developer';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
+import 'package:shradhanjali_card/Screens/select_theme.dart';
 
 class DetailsScreen extends StatefulWidget {
-  final Color colors;
-  const DetailsScreen({Key? key, required this.colors}) : super(key: key);
+  const DetailsScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<DetailsScreen> createState() => _DetailsScreenState();
@@ -46,7 +49,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        backgroundColor: widget.colors,
         appBar: AppBar(
           backgroundColor: Colors.black,
           centerTitle: true,
@@ -707,16 +709,21 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 ),
                 Align(
                   alignment: Alignment.center,
-                  child: Container(
-                    height: Get.height * 0.06,
-                    width: Get.width * 0.30,
-                    decoration: BoxDecoration(
-                        color: Colors.black,
-                        borderRadius: BorderRadius.circular(20)),
-                    child: Center(
-                      child: Text(
-                        'સાચવો',
-                        style: TextStyle(color: Colors.white),
+                  child: GestureDetector(
+                    onTap: () {
+                      Get.to(() => SelectThemeScreen());
+                    },
+                    child: Container(
+                      height: Get.height * 0.06,
+                      width: Get.width * 0.30,
+                      decoration: BoxDecoration(
+                          color: Colors.black,
+                          borderRadius: BorderRadius.circular(20)),
+                      child: Center(
+                        child: Text(
+                          'સાચવો',
+                          style: TextStyle(color: Colors.white),
+                        ),
                       ),
                     ),
                   ),

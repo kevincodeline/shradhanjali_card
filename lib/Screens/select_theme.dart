@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
 import 'package:shradhanjali_card/Screens/details_screen.dart';
 
@@ -19,45 +22,96 @@ class _SelectThemeScreenState extends State<SelectThemeScreen> {
   ];
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.black,
-          centerTitle: true,
-          title: Text(
-            'Select Background',
-            style: TextStyle(color: Colors.white),
+    return Container(
+      height: Get.height,
+      width: Get.width,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(
+            'assets/bg.jpg',
           ),
+          fit: BoxFit.cover,
         ),
-        body: SingleChildScrollView(
-          child: Column(
+      ),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(
+          sigmaY: 3,
+          sigmaX: 3,
+        ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Column(
             children: [
-              GridView.builder(
-                shrinkWrap: true,
-                itemCount: data.length,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    childAspectRatio: 0.70,
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 2),
-                itemBuilder: (context, index) {
-                  return GestureDetector(
-                    onTap: () {
-                      Get.to(
-                        () => DetailsScreen(
-                          colors: data[index],
-                        ),
-                      );
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Container(
-                        color: data[index],
+              SizedBox(
+                height: 50,
+              ),
+              Container(
+                height: 70,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.white54,
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: 15,
+                    ),
+                    IconButton(
+                      splashRadius: 20,
+                      onPressed: () {
+                        Get.back();
+                      },
+                      icon: Icon(
+                        Icons.arrow_back_ios,
                       ),
                     ),
-                  );
-                },
+                    Text(
+                      'Select Background',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Expanded(
+                child: MasonryGridView.count(
+                  padding: EdgeInsets.zero,
+                  itemCount: data.length,
+                  physics: BouncingScrollPhysics(),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 4,
+                  crossAxisSpacing: 4,
+                  itemBuilder: (context, index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => DetailsScreen(),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Container(
+                          padding: EdgeInsets.all(8),
+                          height: 300,
+                          width: 200,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            color: Colors.white54,
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: data[index],
+                            ),
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                ),
               )
             ],
           ),
