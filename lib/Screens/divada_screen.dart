@@ -3,9 +3,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
+import 'package:shradhanjali_card/Screens/main_screen.dart';
 
 class DivdaScreen extends StatefulWidget {
-  const DivdaScreen({Key? key}) : super(key: key);
+  final Color? color;
+  final Color? colorBorder;
+  const DivdaScreen({Key? key, this.color, this.colorBorder}) : super(key: key);
 
   @override
   State<DivdaScreen> createState() => _DivdaScreenState();
@@ -69,7 +72,11 @@ class _DivdaScreenState extends State<DivdaScreen> {
               return GestureDetector(
                 onTap: () {
                   Get.to(
-                    () => DivdaScreen(),
+                    () => MainScreen(
+                      color: widget.color!,
+                      component: data[index],
+                      colorBorder: widget.colorBorder!,
+                    ),
                   );
                 },
                 child: Padding(

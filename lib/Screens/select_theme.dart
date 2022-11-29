@@ -14,11 +14,18 @@ class SelectThemeScreen extends StatefulWidget {
 
 class _SelectThemeScreenState extends State<SelectThemeScreen> {
   List<Color> data = [
-    Colors.yellow.shade200,
-    Colors.green.shade200,
-    Colors.red.shade200,
-    Colors.blue.shade200,
-    Colors.pink.shade200,
+    Colors.yellow.shade100,
+    Colors.green.shade100,
+    Colors.red.shade100,
+    Colors.blue.shade100,
+    Colors.pink.shade100,
+  ];
+  List<Color> data1 = [
+    Colors.yellow,
+    Colors.green,
+    Colors.red,
+    Colors.blue,
+    Colors.pink,
   ];
   @override
   Widget build(BuildContext context) {
@@ -68,7 +75,8 @@ class _SelectThemeScreenState extends State<SelectThemeScreen> {
               return GestureDetector(
                 onTap: () {
                   Get.to(
-                    () => DivdaScreen(),
+                    () => DivdaScreen(
+                        color: data[index], colorBorder: data1[index]),
                   );
                 },
                 child: Padding(
@@ -84,7 +92,7 @@ class _SelectThemeScreenState extends State<SelectThemeScreen> {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12),
-                        color: data[index],
+                        color: data1[index],
                       ),
                     ),
                   ),
