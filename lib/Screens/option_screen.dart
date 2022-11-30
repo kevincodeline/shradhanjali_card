@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shradhanjali_card/Screens/besnu_screen.dart';
 import 'package:shradhanjali_card/Screens/details_screen.dart';
 
 class OptionScreen extends StatefulWidget {
@@ -58,7 +59,11 @@ class _OptionScreenState extends State<OptionScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  CommonOption(onTap: () {}, text: 'બેસણું '),
+                  CommonOption(
+                      onTap: () {
+                        Get.to(() => BesnuScreen());
+                      },
+                      text: 'બેસણું '),
                   SizedBox(
                     height: 20,
                   ),
