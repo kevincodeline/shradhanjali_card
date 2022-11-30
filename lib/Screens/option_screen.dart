@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shradhanjali_card/Screens/besnu_screen.dart';
 import 'package:shradhanjali_card/Screens/details_screen.dart';
+import 'package:shradhanjali_card/Screens/panidhol_screen.dart';
 
 class OptionScreen extends StatefulWidget {
   const OptionScreen({Key? key}) : super(key: key);
@@ -67,7 +68,11 @@ class _OptionScreenState extends State<OptionScreen> {
                   SizedBox(
                     height: 20,
                   ),
-                  CommonOption(onTap: () {}, text: 'પાણીઢોળ'),
+                  CommonOption(
+                      onTap: () {
+                        Get.to(() => PanidholScreen());
+                      },
+                      text: 'પાણીઢોળ'),
                 ],
               ),
             ),

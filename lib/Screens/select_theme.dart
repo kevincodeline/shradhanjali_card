@@ -6,7 +6,23 @@ import 'package:get/get.dart';
 import 'package:shradhanjali_card/Screens/divada_screen.dart';
 
 class SelectThemeScreen extends StatefulWidget {
-  const SelectThemeScreen({Key? key}) : super(key: key);
+  final String? type;
+  final String image;
+  final String deadName;
+  final String deadDate;
+  final String age;
+  final String village;
+  final String address;
+  const SelectThemeScreen(
+      {Key? key,
+      this.type,
+      required this.image,
+      required this.deadName,
+      required this.deadDate,
+      required this.age,
+      required this.village,
+      required this.address})
+      : super(key: key);
 
   @override
   State<SelectThemeScreen> createState() => _SelectThemeScreenState();
@@ -76,7 +92,15 @@ class _SelectThemeScreenState extends State<SelectThemeScreen> {
                 onTap: () {
                   Get.to(
                     () => DivdaScreen(
-                        color: data[index], colorBorder: data1[index]),
+                        address: widget.address,
+                        age: widget.age,
+                        deadDate: widget.deadDate,
+                        deadName: widget.deadName,
+                        village: widget.village,
+                        type: widget.type,
+                        image: widget.image,
+                        color: data[index],
+                        colorBorder: data1[index]),
                   );
                 },
                 child: Padding(

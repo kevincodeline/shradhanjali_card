@@ -8,7 +8,25 @@ import 'package:shradhanjali_card/Screens/main_screen.dart';
 class DivdaScreen extends StatefulWidget {
   final Color? color;
   final Color? colorBorder;
-  const DivdaScreen({Key? key, this.color, this.colorBorder}) : super(key: key);
+  final String? type;
+  final String image;
+  final String deadName;
+  final String deadDate;
+  final String age;
+  final String village;
+  final String address;
+  const DivdaScreen(
+      {Key? key,
+      this.color,
+      this.colorBorder,
+      this.type,
+      required this.image,
+      required this.deadName,
+      required this.deadDate,
+      required this.age,
+      required this.village,
+      required this.address})
+      : super(key: key);
 
   @override
   State<DivdaScreen> createState() => _DivdaScreenState();
@@ -73,9 +91,16 @@ class _DivdaScreenState extends State<DivdaScreen> {
                 onTap: () {
                   Get.to(
                     () => MainScreen(
+                      address: widget.address,
+                      age: widget.age,
+                      deadDate: widget.deadDate,
+                      deadName: widget.deadName,
+                      village: widget.village,
                       color: widget.color!,
                       component: data[index],
                       colorBorder: widget.colorBorder!,
+                      image: widget.image,
+                      type: widget.type.toString(),
                     ),
                   );
                 },
